@@ -1,0 +1,21 @@
+select 
+  a2.legal_entity_id, 
+  a2.name legal_entity_name, 
+  address1 || ',' || address2 || ',' || address3 || ',' || address4 ADDRESS, 
+  city || ',' || state || ',' || province || ',' ||(
+    select 
+      territory_short_name 
+    from 
+      fnd_territories_tl 
+    where 
+      territory_code = a3.country
+  ) country 
+from 
+  xle_registrations a1, 
+  xle_entity_profiles a2, 
+  hz_locations a3 
+where 
+  1 = 1 
+  and a2.legal_entity_id = a1.source_id 
+  and source_table = 'XLE_ENTITY_PROFILES' 
+  and a1.location_id = a3.location_id --and a2.legal_entity_id=:legal_entity_id
