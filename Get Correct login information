@@ -1,0 +1,12 @@
+Select 
+  : XDO_USER_NAME, 
+  : XDO_USER_ID 
+From 
+  PER_USERS pu, 
+  POS_USER_ACCESS_VALUES pua 
+Where 
+  1 = 1 
+  AND pu.party_id = pua.per_party_id 
+  AND pua.access_code = 'SUPPLIER' 
+  AND pua.access_value = aia.vendor_id 
+  AND UPPER(PU.USERNAME) = UPPER(: XDO_USER_NAME)
