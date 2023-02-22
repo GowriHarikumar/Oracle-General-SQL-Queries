@@ -1,1 +1,0 @@
-# Oracle-General-SQL-Queries
