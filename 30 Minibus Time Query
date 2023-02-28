@@ -1,0 +1,1 @@
+creation_date between sysdate - 30/(24*60) and sysdate
